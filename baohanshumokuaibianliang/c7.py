@@ -1,2 +1,3 @@
-import c6
-print(c6.a)
+import t.c6
+print(t.c6.a)
+
