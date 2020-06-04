@@ -3,8 +3,8 @@
 
 from t.c6 import *
 print(a)
-print(c)
-print(b)
+# print(c)
+# print(b)
 
 
 # from t import c6 
