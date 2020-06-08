@@ -5,7 +5,7 @@ class Student(object): #类是抽象的 实例是具体的
 # 类变量  和 实例变量不同   某个类的属性
     name = 'pp'   
     age = 0
-    sum = 0
+    sum1 = 0
 
 # 79406503
 
@@ -17,8 +17,13 @@ class Student(object): #类是抽象的 实例是具体的
 # 意义： 初始化类的各种特征
         self.name = name1
         self.age = age
-        print(self.name)
-        print(self.__dict__) 
+        # 实例方法里正确访问类变量的方式:
+        print(Student.sum1)
+        # 第二种 self内置的__class__代表的类
+        print(self.__class__.sum1)
+
+        # print(self.name)
+        # print(self.__dict__) 
         #python 
         # 查找机制仅在类对象外部调用的时候生效
         # 访问实例变量的时候加self
@@ -40,11 +45,13 @@ class Student(object): #类是抽象的 实例是具体的
 student1 = Student('Zz',18)
 # student2 = Student('oo',12)
 # student1.do_homework()
+
 # student2.print_file()
-# 
+
+print(student1.name)
 
 
-# print(Student.name)
+print(Student.sum1)
 
 
 # print(student1.__dict__)
