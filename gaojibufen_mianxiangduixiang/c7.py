@@ -17,7 +17,7 @@ class Student(object): #类是抽象的 实例是具体的
 # 意义： 初始化类的各种特征
         self.name = name1
         self.age = age
-        # 实例方法里正确访问类变量的方式:
+        # 实例方法里正确访问类变量e的方式:
         print(Student.sum1)
         # 第二种 self内置的__class__代表的类
         print(self.__class__.sum1)
