@@ -1,5 +1,13 @@
-'''静态方法'''
+'''
+没有什么是不能访问的
+私有变量强行从外部赋值不会报错?
 
+
+严格意义上 python没有私有变量 
+通过魔术方法读取被更换的私有变量  
+没有任何记住读取私有变量
+不应该强制读取
+'''
 
 class Student(object):
     sum = 0
@@ -68,6 +76,7 @@ class Student(object):
  
 
 student1 = Student('Zz',18)
+student2 = Student('Xx',18)
 
 # 外部访问
 
@@ -84,27 +93,15 @@ student1.plus_sum()  #对象访问类方法
 
 result = student1.marking(59)
 print(result)
-student1.__score = 59  #如果赋值 建议通过方法
-# python动态语言的特性 ,给student1新添加了一个score
+#如果赋值 建议通过方法
+student1.__score = -1  
+#### python动态语言的特性 ,给student1对象新添加了一个新属性__score,不是设置的实例变量__score
+# 不可以动态添加私有属性 
+
 print(student1.__score)
-# r = student1.score
-# print(r)
-
-# 不要直接在对象外部对成员变量进行赋值,如果要赋值,建议通过方法,
-# 原因在于可以在方法里面对对象已输入的参数进行判读,
-# 如果不符合它的数据状态的要求,超出了范围.可以保护数据
-
-# 如果一个类下面有好多个变量
-
-# 有没有方法可以阻止在外部对变量进行赋值或读取操作?
-# 成员可见性问题 
-# 公开的 public   赋值  读取
-# 私有的 private  在外部无法直接读取或赋值设置
-# 为什么此demo所有变量方法都是公开的?  其他语言的前缀加上public 代表公开的 加上private 是私有的 不能从外部直接访问
-# python 没有 public private 没有这两个关键字代表公开私有 
-# python 用 双下划线 __xxx 来标识方法或变量是私有 没有__是公开的
-
-# 为什么构造函数前面有双下划线 能从外部访问?
-# python特有的函数或变量, 允许从外部进行访问 前后都是双下划线
-# 内置的命名风格  个人应极力避免
-
+print(student1.__dict__)   #python 存储私有变量做的更改 (类名+__xx )'_Student__score': 59,
+# {'name': 'Zz', 'age': 18, '_Student__score': 59, '__score': -1}
+# print('-'*20)
+# print(student2.__score)  # 报错 
+print(student2.__dict__)
+print(student2._Student__score)
